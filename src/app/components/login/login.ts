@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login() {
     const payload = {
@@ -35,7 +36,7 @@ export class LoginComponent {
 
           if (response?.token) {
             localStorage.setItem('token', response.token);
-            // TODO: redirect alla dashboard
+            this.router.navigate(['/dashboard'])
           }
         },
         error: (err) => {

@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './components/login/login';
+import { DashboardComponent } from './components/dashboard/dashboard';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,12 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [
     RouterOutlet,
-    LoginComponent,
-    FormsModule,       
-    HttpClientModule   
+    FormsModule,
+    HttpClientModule
   ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class App {
   protected readonly title = signal('taskmanager-project-frontend');
