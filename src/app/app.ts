@@ -1,9 +1,18 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { LoginComponent } from './components/login/login';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    LoginComponent,
+    FormsModule,       
+    HttpClientModule   
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
