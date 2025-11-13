@@ -17,7 +17,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   login() {
     const payload = {
@@ -29,13 +29,13 @@ export class LoginComponent {
       'Content-Type': 'application/json'
     });
 
-    this.http.post<{ token: string }>('http://localhost:8080/auth/login', payload, { headers })
+    this.http.post<{ accessToken: string }>('http://localhost:8080/auth/login', payload, { headers })
       .subscribe({
         next: (response) => {
           console.log('Login OK!', response);
-
-          if (response?.token) {
-            localStorage.setItem('token', response.token);
+          
+          if (response?.accessToken) {
+            localStorage.setItem('token', response.accessToken);
             this.router.navigate(['/dashboard'])
           }
         },
