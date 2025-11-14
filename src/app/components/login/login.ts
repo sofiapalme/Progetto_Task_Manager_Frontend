@@ -36,6 +36,7 @@ export class LoginComponent {
           
           if (response?.accessToken) {
             localStorage.setItem('token', response.accessToken);
+            localStorage.setItem('email',this.email)
             this.router.navigate(['/dashboard'])
           }
         },
