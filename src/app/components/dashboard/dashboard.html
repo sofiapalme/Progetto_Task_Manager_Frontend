@@ -1,11 +1,42 @@
 <header class="header">
-    <div class="left">{{ email }}</div>
-    <button class="add-btn" (click)="aggiungiProgetto()">Aggiungi progetto</button>
+  <div class="left">
+    <img src="icon-placeholder.png" class="profile-icon" />
+    <div class="user-info">
+      <div class="username">{{ username }}</div>
+      <div class="email">{{ email }}</div>
+    </div>
+  </div>
+
+  <button class="add-btn" (click)="openModal()">Aggiungi progetto</button>
 </header>
 
-<div class="cards-container">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+<!-- MODALE -->
+<div class="modal-overlay" *ngIf="modalOpen">
+  <div class="modal">
+    <button class="close-btn" (click)="closeModal()">✖</button>
+
+    <h2>Nuovo Progetto</h2>
+
+    <div class="form-group">
+      <label>Titolo *</label>
+      <input type="text" [(ngModel)]="formData.titolo">
+    </div>
+
+    <div class="form-group">
+      <label>Descrizione</label>
+      <textarea [(ngModel)]="formData.descrizione"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Fasi *</label>
+      <textarea [(ngModel)]="formData.fasi"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Collaboratori</label>
+      <input type="text" [(ngModel)]="formData.collaboratori">
+    </div>
+
+    <button class="submit-btn" (click)="submitProgetto()">+</button>
+  </div>
 </div>
